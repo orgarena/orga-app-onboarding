@@ -58,6 +58,7 @@ Write-Host "Azure Ad TenantId: $tenantId`nORGA App Admins: $adminGroupId `nORGA 
 
 ```
 
+Sollen mehrere Mandanten in der ORGA App auf das gleiche Azure AD zugreifen, können verschiedene Gruppen angelegt werden. Das folgende Skript stellt eine Postfix Variable für den Mandanten bereit.
 
 ```powershell
 
