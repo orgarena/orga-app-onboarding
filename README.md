@@ -18,6 +18,8 @@ https://login.microsoftonline.com/common/adminconsent?client_id=77991b59-7577-42
 
 Wird der Admin Consent durch einen external Guest User druchgeführt, muss "common" durch den Mandanten ersetzt (z.B. "orga-app.de") werden. 
 
+Dies ist zum Beispiel der Fall, wenn ein externer Dienstleister involviert ist, und dieser sich mit seinem persönlichem Login aus dem Home-Directory (z.B. user@softwarepioniere.de) im AD des Kunden (z.B. orga-app.de) anmeldet.
+
 
 ## Azure Active Directory Gruppen anlegen
 
