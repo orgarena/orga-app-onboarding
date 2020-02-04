@@ -14,7 +14,7 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 
 Die API benötigt Zugriff auf das Azure Ad. Mit dem Admin Consent wird dieser Zugriff gewährt. "common" durch den Mandanten ersetzen. Z.B. "orga-app.de". Dann den Link im Browser aufrufen.
 
-https://login.microsoftonline.com/common/adminconsent?client_id=8ab20a21-5fa0-4d89-8392-125469e74cc1&response_mode=query&redirect_uri=https%3A%2F%2Forga-app-api-prod.azurewebsites.net%2Fazuread%2Fcallback
+https://login.microsoftonline.com/common/adminconsent?client_id=77991b59-7577-4292-b4ec-bdf115bb872e&response_mode=query&redirect_uri=https%3A%2F%2Forga-app-api-prod.azurewebsites.net%2Fazuread%2Fcallback
 
 ## Azure Active Directory Gruppen anlegen
 
