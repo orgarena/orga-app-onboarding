@@ -24,12 +24,13 @@ Dies ist zum Beispiel der Fall, wenn ein externer Dienstleister involviert ist, 
 ## Azure Active Directory Gruppen anlegen
 
 Die Azure Ad Gruppen können mit diesem Powershell Script in der AZ CLI angelegt werden. 
-Das Skripz kann entweder auf dem lokalen Rechner oder in der Azure Cloud Shell ausgeführt werden. 
+Das Skript kann entweder auf dem lokalen Rechner oder in der Azure Cloud Shell ausgeführt werden. 
 
 ```powershell
 
 # login bei lokaler ausführung
-az login --allow-no-subscriptions
+az account clear
+az login --allow-no-subscriptions --tenant xxx.de
 
 ```
 
@@ -38,9 +39,9 @@ az login --allow-no-subscriptions
 # Gruppen anlegen und aktuellen Benutzer in die TecAdmin Gruppe einfügen
 
 $currentUserId = (az ad signed-in-user show --query 'objectId' --output tsv)
-$adminGroupId = (az ad group create --display-name 'ORGA App Admins' --query 'objectId' --output tsv)
-$benutzerGroupId = (az ad group create --display-name 'ORGA App Benutzer' --query 'objectId' --output tsv)
-$tecadminGroupId = (az ad group create --display-name 'ORGA App Tech Admins' --query 'objectId' --output tsv)
+$adminGroupId = (az ad group create --display-name 'ORGA App Admins' --mail-nickname 'orga-app-admins' --query 'objectId' --output tsv)
+$benutzerGroupId = (az ad group create --display-name 'ORGA App Benutzer' --mail-nickname 'orga-app-benutzer' --query 'objectId' --output tsv)
+$tecadminGroupId = (az ad group create --display-name 'ORGA App Tech Admins' --mail-nickname 'orga-app-tec-admins' --query 'objectId' --output tsv)
 az ad group member add --group $tecadminGroupId --member-id $currentUserId
 $tenantId = (az account show --query 'tenantId' --output tsv)
 $result = @{
@@ -65,13 +66,13 @@ Sollen mehrere Mandanten in der ORGA App auf das gleiche Azure AD zugreifen, kö
 # Variante für mehrere ORGA App Mandanten  im Azure Ad Tenant
 
 $postfix = 'DEMO 1'
-
+$postfix_nick = 'demo1'
 # Gruppen anlegen und aktuellen Benutzer in die TecAdmin Gruppe einfügen
 
 $currentUserId = (az ad signed-in-user show --query 'objectId' --output tsv)
-$adminGroupId = (az ad group create --display-name "ORGA App Admins $postfix" --query 'objectId' --output tsv)
-$benutzerGroupId = (az ad group create --display-name "ORGA App Benutzer $postfix" --query 'objectId' --output tsv)
-$tecadminGroupId = (az ad group create --display-name "ORGA App Tech Admins $postfix" --query 'objectId' --output tsv)
+$adminGroupId = (az ad group create --display-name "ORGA App Admins $postfix" --mail-nickname "orga-app-admins-$postfix_nick" --query  'objectId' --output tsv)
+$benutzerGroupId = (az ad group create --display-name "ORGA App Benutzer $postfix" --mail-nickname "orga-app-benutzer-$postfix_nick" --query 'objectId' --output tsv)
+$tecadminGroupId = (az ad group create --display-name "ORGA App Tech Admins $postfix" --mail-nickname "orga-app-tec-admins-$postfix_nick" --query 'objectId' --output tsv)
 az ad group member add --group $tecadminGroupId --member-id $currentUserId
 $tenantId = (az account show --query 'tenantId' --output tsv)
 $result = @{
@@ -86,5 +87,35 @@ ConvertTo-Json -InputObject $result
 
 # Ausgabe in die Console
 Write-Host "Azure Ad TenantId: $tenantId`nORGA App Admins: $adminGroupId `nORGA App Benutzer: $benutzerGroupId `nORGA-App Tech Admins $tecadminGroupId"
+
+```
+
+Hier ist eine Variante mit PowerShell Modulen
+
+```powershell
+
+# vorrausetzung: AzureAd PS-Modul installiert
+# Install-Module AzureAD
+Connect-AzureAD -Confirm -TenantId 'XXX'
+
+$adminGroup= New-AzureADGroup -DisplayName 'ORGA App Admins' -MailNickName 'orga-app-admins' -MailEnabled $false -SecurityEnabled $true
+$benutzerGroup= New-AzureADGroup -DisplayName 'ORGA App Benutzer' -MailNickName 'orga-app-benutzer' -MailEnabled $false -SecurityEnabled $true
+$tecadminGroup= New-AzureADGroup -DisplayName 'ORGA App Tech Admins' -MailNickName 'orga-app-tec-admins' -MailEnabled $false -SecurityEnabled $true
+
+$currentUserName = (Get-AzureADCurrentSessionInfo).Account.Id
+$currentUserId = (Get-AzureADUser -Filter "UserPrincipalName eq '$currentUserName'").ObjectId
+Add-AzureADGroupMember -ObjectId $tecadminGroup.ObjectId -RefObjectId $currentUserId
+
+$tenant = Get-AzureADTenantDetail
+
+$result = @{
+   tenant_id = $tenant.ObjectId
+   user_group_id = $benutzerGroup.ObjectId
+   admin_group_id = $adminGroup.ObjectId
+   technical_admin_group_id = $tecadminGroup.ObjectId
+}
+
+# Ausgabe der Informationen als JSON zum Update der ORGA App AzureAd Config
+ConvertTo-Json -InputObject $result
 
 ```
