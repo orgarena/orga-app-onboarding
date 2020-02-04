@@ -23,7 +23,8 @@ Dies ist zum Beispiel der Fall, wenn ein externer Dienstleister involviert ist, 
 
 ## Azure Active Directory Gruppen anlegen
 
-Die Azure Ad Gruppen können mit diesem Script über die AZ CLI angelegt werden. Dies kann entweder auf dem lokalen Rechner oder in der Azure Cloud Shell ausgeführt werden. 
+Die Azure Ad Gruppen können mit diesem Powershell Script in der AZ CLI angelegt werden. 
+Das Skripz kann entweder auf dem lokalen Rechner oder in der Azure Cloud Shell ausgeführt werden. 
 
 ```powershell
 
