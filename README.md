@@ -26,13 +26,7 @@ Dies ist zum Beispiel der Fall, wenn ein externer Dienstleister involviert ist, 
 Die Azure Ad Gruppen können mit diesem Powershell Script in der AZ CLI angelegt werden. 
 Das Skript kann entweder auf dem lokalen Rechner oder in der Azure Cloud Shell ausgeführt werden. 
 
-```powershell
 
-# login bei lokaler ausführung
-az account clear
-az login --allow-no-subscriptions --tenant xxx.de
-
-```
 
 ```powershell
 
@@ -42,37 +36,6 @@ $currentUserId = (az ad signed-in-user show --query 'objectId' --output tsv)
 $adminGroupId = (az ad group create --display-name 'ORGA App Admins' --mail-nickname 'orga-app-admins' --query 'objectId' --output tsv)
 $benutzerGroupId = (az ad group create --display-name 'ORGA App Benutzer' --mail-nickname 'orga-app-benutzer' --query 'objectId' --output tsv)
 $tecadminGroupId = (az ad group create --display-name 'ORGA App Tech Admins' --mail-nickname 'orga-app-tec-admins' --query 'objectId' --output tsv)
-az ad group member add --group $tecadminGroupId --member-id $currentUserId
-$tenantId = (az account show --query 'tenantId' --output tsv)
-$result = @{
-   tenant_id = $tenantId
-   user_group_id = $benutzerGroupId
-   admin_group_id = $adminGroupId
-   technical_admin_group_id = $tecadminGroupId
-}
-
-# Ausgabe der Informationen als JSON zum Update der ORGA App AzureAd Config
-ConvertTo-Json -InputObject $result
-
-# Ausgabe in die Console
-Write-Host "Azure Ad TenantId: $tenantId`nORGA App Admins: $adminGroupId `nORGA App Benutzer: $benutzerGroupId `nORGA-App Tech Admins $tecadminGroupId"
-
-```
-
-Sollen mehrere Mandanten in der ORGA App auf das gleiche Azure AD zugreifen, können verschiedene Gruppen angelegt werden. Das folgende Skript stellt eine Postfix Variable für den Mandanten bereit.
-
-```powershell
-
-# Variante für mehrere ORGA App Mandanten  im Azure Ad Tenant
-
-$postfix = 'DEMO 1'
-$postfix_nick = 'demo1'
-# Gruppen anlegen und aktuellen Benutzer in die TecAdmin Gruppe einfügen
-
-$currentUserId = (az ad signed-in-user show --query 'objectId' --output tsv)
-$adminGroupId = (az ad group create --display-name "ORGA App Admins $postfix" --mail-nickname "orga-app-admins-$postfix_nick" --query  'objectId' --output tsv)
-$benutzerGroupId = (az ad group create --display-name "ORGA App Benutzer $postfix" --mail-nickname "orga-app-benutzer-$postfix_nick" --query 'objectId' --output tsv)
-$tecadminGroupId = (az ad group create --display-name "ORGA App Tech Admins $postfix" --mail-nickname "orga-app-tec-admins-$postfix_nick" --query 'objectId' --output tsv)
 az ad group member add --group $tecadminGroupId --member-id $currentUserId
 $tenantId = (az account show --query 'tenantId' --output tsv)
 $result = @{
@@ -119,3 +82,44 @@ $result = @{
 ConvertTo-Json -InputObject $result
 
 ```
+
+```powershell
+
+# login bei lokaler ausführung
+az account clear
+az login --allow-no-subscriptions --tenant xxx.de
+
+```
+
+
+Sollen mehrere Mandanten in der ORGA App auf das gleiche Azure AD zugreifen, können verschiedene Gruppen angelegt werden. Das folgende Skript stellt eine Postfix Variable für den Mandanten bereit.
+
+```powershell
+
+# Variante für mehrere ORGA App Mandanten  im Azure Ad Tenant
+
+$postfix = 'DEMO 1'
+$postfix_nick = 'demo1'
+# Gruppen anlegen und aktuellen Benutzer in die TecAdmin Gruppe einfügen
+
+$currentUserId = (az ad signed-in-user show --query 'objectId' --output tsv)
+$adminGroupId = (az ad group create --display-name "ORGA App Admins $postfix" --mail-nickname "orga-app-admins-$postfix_nick" --query  'objectId' --output tsv)
+$benutzerGroupId = (az ad group create --display-name "ORGA App Benutzer $postfix" --mail-nickname "orga-app-benutzer-$postfix_nick" --query 'objectId' --output tsv)
+$tecadminGroupId = (az ad group create --display-name "ORGA App Tech Admins $postfix" --mail-nickname "orga-app-tec-admins-$postfix_nick" --query 'objectId' --output tsv)
+az ad group member add --group $tecadminGroupId --member-id $currentUserId
+$tenantId = (az account show --query 'tenantId' --output tsv)
+$result = @{
+   tenant_id = $tenantId
+   user_group_id = $benutzerGroupId
+   admin_group_id = $adminGroupId
+   technical_admin_group_id = $tecadminGroupId
+}
+
+# Ausgabe der Informationen als JSON zum Update der ORGA App AzureAd Config
+ConvertTo-Json -InputObject $result
+
+# Ausgabe in die Console
+Write-Host "Azure Ad TenantId: $tenantId`nORGA App Admins: $adminGroupId `nORGA App Benutzer: $benutzerGroupId `nORGA-App Tech Admins $tecadminGroupId"
+
+```
+
