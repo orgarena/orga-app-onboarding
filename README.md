@@ -2,6 +2,12 @@
 
 Onboarding für die ORGA App
 
+## Checkliste
+
+- Admin Consent
+- Azure Active Directory Gruppen
+- Optional: orgarena Benutzer anlegen
+
 ## Azure Ad Links
 
 Diese Links stellen Informationen zum Mandanten bereit. "common" durch den Mandanten ersetzen. Z.B. "orga-app.de".
@@ -9,6 +15,9 @@ Diese Links stellen Informationen zum Mandanten bereit. "common" durch den Manda
 https://login.microsoftonline.com/common/.well-known/openid-configuration
 https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 
+## ORGA App Links
+
+https://orgarena.de/apps.html
 
 ## Admin Consent durchführen
 
@@ -25,8 +34,6 @@ Dies ist zum Beispiel der Fall, wenn ein externer Dienstleister involviert ist, 
 
 Die Azure Ad Gruppen können mit diesem Powershell Script in der AZ CLI angelegt werden. 
 Das Skript kann entweder auf dem lokalen Rechner oder in der Azure Cloud Shell ausgeführt werden. 
-
-
 
 ```powershell
 
