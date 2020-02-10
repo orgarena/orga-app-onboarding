@@ -4,8 +4,8 @@ Onboarding für die ORGA App
 
 ## Checkliste
 
-- Admin Consent
-- Azure Active Directory Gruppen
+- Admin Consent durchführen
+- Azure Active Directory Gruppen anlegen
 - Optional: orgarena Benutzer anlegen
 
 ## Azure Ad Links
