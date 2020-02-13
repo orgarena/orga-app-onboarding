@@ -1,4 +1,4 @@
-# ORGA App Onboarding - Theming
+# ORGA App Onboarding - Branding
 
 ## Checkliste
 
