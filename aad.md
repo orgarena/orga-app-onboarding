@@ -10,15 +10,12 @@
   - Benutzer: alle Benutzer
 - Optional: orgarena Benutzer anlegen
 
-## Azure Ad Links
+## Nützliche Links
 
 Diese Links stellen Informationen zum Mandanten bereit. "common" durch den Mandanten ersetzen. Z.B. "orga-app.de".
 
 https://login.microsoftonline.com/common/.well-known/openid-configuration
 https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
-
-## ORGA App Links
-
 https://orgarena.de/apps.html
 
 ## Admin Consent durchführen
