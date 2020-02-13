@@ -6,7 +6,7 @@
 - Admin Consent durchführen
 - Azure Active Directory Gruppen anlegen
   - Technical Admins: Führen technische Konfigurationen wie z.B. Azure Ad, SMTP etc. durch
-  - Admins: Führen Inhaltliche KOnfigurationen wie z.B. Mandanten Einstellungen durch, sehen alle Funktionsbereiche und Rollen
+  - Admins: Führen Inhaltliche Konfigurationen wie z.B. Mandanten Einstellungen durch, sehen alle Funktionsbereiche und Rollen
   - Benutzer: alle Benutzer
 - Optional: orgarena Benutzer anlegen
 
