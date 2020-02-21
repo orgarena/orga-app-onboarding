@@ -16,12 +16,12 @@ Schreibweise ```255 255 255``` dient nur der besseren Orientierung.
 
 Die Farbangaben beziehen sich auf den **sRGB Farbraum**.
 
-In den Farb-Bezeichnungen werden oft die Kürzel -bg und -fg benutzt hier eine kurze Erklärung dazu:
+In den Farb-Bezeichnungen werden oft die Kürzel -bg und -fg benutzt. Hier eine kurze Erklärung dazu:
 
-**-bg** (background): Hintergrundfarbe. Hauptsächlich für Flächen. Kann natürlich auch für Schriften, Linien u.s.w.
-genutzt werden
+**-bg** (background): Hintergrundfarbe. Hauptsächlich für Flächen. Wird aber auch vereinzelt für Schriften,
+Linien u.s.w. benutzt.
 
-**-fg** (foreground): Schrift- bzw. Kontrast-Farbe für eine bestimmte Hintergrundfarbe
+**-fg** (foreground): Schrift- bzw. Kontrast-Farbe für eine bestimmte Hintergrundfarbe.
 
 | #   | Bezeichnung         |                                                       | HEX     | RGB         |
 | --- | ------------------- | ----------------------------------------------------- | ------- | ----------- |
