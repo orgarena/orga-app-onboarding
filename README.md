@@ -6,7 +6,8 @@
 * [Einrichtung des Azure Active Directory](aad.md)
 
 ## Style und Premium Paket
-* Theming bei Style und Premium Paket: [Theming](theming.md)
+* [Grafiken](grafiken.md)
+* [Farben](farben.md)
 
 ## Premium Paket
 * Mobile App Branding: [Branding](branding.md)
