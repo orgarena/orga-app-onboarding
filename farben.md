@@ -1,18 +1,29 @@
 # ORGA App Farben
 
-Die ORGA App kann durch eigene Farben individualisiert werden. Welche Farben das sind, in welchem Format sie benötigt
-werden und an welchen Stellen sie zum Einsatz kommen, wird im Folgenden erklärt.
+Zum schnellen und komfortablen Erstellen Ihres individuellen Themes können Sie den ORGA App Theme Generator benutzen.
+
+## [ORGA App Theme Generator öffnen](https://orgarena.de/orga-app-theme-generator/)
+
+Am Beispiel des ORGA App Standard Themes wird hier gezeigt, welche Farben für ein Theme benötigt werden und an
+welchen Stellen sie in der mobilen App und im Desktop Client verwendet werden. Generell sollte der oben verlinkte
+Theme Generator selbsterklärend sein. Dieses Dokument dient der schnellen Übersicht bzw. als Begleitlektüre zum
+Generator.
 
 ## Übersicht der verwendeten Farben
+
+Wir benötigen für ein Theme die Farbangaben in der RGB Hexadezimal Schreibweise ```#ffffff```. Die RGB Dezimal
+Schreibweise ```255 255 255``` dient nur der besseren Orientierung.
+
+Die Farbangaben beziehen sich auf den **sRGB Farbraum**.
+
+In den Farb-Bezeichnungen werden oft die Kürzel -bg und -fg benutzt hier eine kurze Erklärung dazu:
 
 **-bg** (background): Hintergrundfarbe. Hauptsächlich für Flächen. Kann natürlich auch für Schriften, Linien u.s.w.
 genutzt werden
 
 **-fg** (foreground): Schrift- bzw. Kontrast-Farbe für eine bestimmte Hintergrundfarbe
 
-Die HEX und RGB Angaben beziehen sich auf den **sRGB Farbraum**.
-
-| #   | Beschreibung        |                                                       | HEX     | RGB         |
+| #   | Bezeichnung         |                                                       | HEX     | RGB         |
 | --- | ------------------- | ----------------------------------------------------- | ------- | ----------- |
 | 1   | background          | ![color](images/colors/color_white.png)               | #ffffff | 255 255 255 |
 | 2   | text                | ![color](images/colors/color_primary_shade1_bg.png)   | #2b4b56 |  43  75  86 |
@@ -35,6 +46,10 @@ Die HEX und RGB Angaben beziehen sich auf den **sRGB Farbraum**.
 
 ## Anwendung der Farben in der mobilen App
 
+In den folgenden Grafiken wird mittels der Nummerierung aus der obigen Tabelle die Verwendung der Farben gezeigt.
+Um besser zu unterscheiden, ob ein Punkt zu einem Hintergrund oder zu einer Schrift gehört, wurden folgende
+Farb-Indikatoren benutzt:
+
 | Indikator                                         | Beschreibung                |
 | ------------------------------------------------- | --------------------------- |
 | ![Indikator Hintergrund](images/indikator_bg.png) | Hintergrund Farbe           |
@@ -43,5 +58,8 @@ Die HEX und RGB Angaben beziehen sich auf den **sRGB Farbraum**.
 ![Farben in der mobilen App](images/farben_app.png)
 
 ## Anwendung der Farben im Desktop Client
+
+Falls die Grafik zu klein angezeigt wird, klicken Sie sie mit der rechten Maustaste an und wählen dann "Bild in neuem Tab
+öffnen".
 
 ![Farben im Desktop Client](images/farben_desktop.png)
