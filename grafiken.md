@@ -20,7 +20,7 @@ breites Spektrum an verschiedenen Displays abzudecken, sollte diese Grafik also 
 Mindestgröße von **3300 Pixel in der Breite** und **2200 Pixel in der Höhe**. Da die Grafik ausschließlich für die
 Anzeige auf Monitoren bzw. Displays genutzt wird, reicht eine Auflösung von **72 dpi**. Als Frabraum verwenden wir
 **sRGB** (falls Ihre Grafik in einem anderen Farbraum erstellt wurde, wird sie in sRGB umgewandelt). Die dpi und
-Farbraum Abgaben gelten auch für alle restlichen Grafiken und werden deshalb im Folgenden nicht weiter erwähnt.
+Farbraum Angaben gelten auch für alle restlichen Grafiken und werden deshalb im Folgenden nicht weiter erwähnt.
 
 In der folgenden Abbildung (*Abb. 1*) sehen Sie beispielhaft, wie die Grafik auf den verschiedenen Geräten angezeigt
 wird:
