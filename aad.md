@@ -40,6 +40,7 @@ Das Skript kann entweder auf dem lokalen Rechner oder in der Azure Cloud Shell a
 
 $currentUserId = (az ad signed-in-user show --query 'objectId' --output tsv)
 $adminGroupId = (az ad group create --display-name 'ORGA App Admins' --mail-nickname 'orga-app-admins' --query 'objectId' --output tsv)
+az ad group member add --group $adminGroupId --member-id $currentUserId
 $benutzerGroupId = (az ad group create --display-name 'ORGA App Benutzer' --mail-nickname 'orga-app-benutzer' --query 'objectId' --output tsv)
 $tecadminGroupId = (az ad group create --display-name 'ORGA App Tech Admins' --mail-nickname 'orga-app-tec-admins' --query 'objectId' --output tsv)
 az ad group member add --group $tecadminGroupId --member-id $currentUserId
@@ -74,6 +75,7 @@ $tecadminGroup= New-AzureADGroup -DisplayName 'ORGA App Tech Admins' -MailNickNa
 $currentUserName = (Get-AzureADCurrentSessionInfo).Account.Id
 $currentUserId = (Get-AzureADUser -Filter "UserPrincipalName eq '$currentUserName'").ObjectId
 Add-AzureADGroupMember -ObjectId $tecadminGroup.ObjectId -RefObjectId $currentUserId
+Add-AzureADGroupMember -ObjectId $adminGroup.ObjectId -RefObjectId $currentUserId
 
 $tenant = Get-AzureADTenantDetail
 
@@ -110,6 +112,7 @@ $postfix_nick = 'demo1'
 
 $currentUserId = (az ad signed-in-user show --query 'objectId' --output tsv)
 $adminGroupId = (az ad group create --display-name "ORGA App Admins $postfix" --mail-nickname "orga-app-admins-$postfix_nick" --query  'objectId' --output tsv)
+az ad group member add --group $adminGroupId --member-id $currentUserId
 $benutzerGroupId = (az ad group create --display-name "ORGA App Benutzer $postfix" --mail-nickname "orga-app-benutzer-$postfix_nick" --query 'objectId' --output tsv)
 $tecadminGroupId = (az ad group create --display-name "ORGA App Tech Admins $postfix" --mail-nickname "orga-app-tec-admins-$postfix_nick" --query 'objectId' --output tsv)
 az ad group member add --group $tecadminGroupId --member-id $currentUserId
