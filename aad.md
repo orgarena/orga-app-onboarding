@@ -14,15 +14,25 @@
 
 Diese Links stellen Informationen zum Mandanten bereit. "common" durch den Mandanten ersetzen. Z.B. "orga-app.de".
 
-https://login.microsoftonline.com/common/.well-known/openid-configuration
-https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
-https://orgarena.de/apps.html
+- https://login.microsoftonline.com/common/.well-known/openid-configuration
+- https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
+- https://orgarena.de/apps.html
 
 ## Admin Consent durchführen
 
-Die API benötigt Zugriff auf das Azure Ad. Mit dem Admin Consent wird dieser Zugriff gewährt.
+Die API benötigt Zugriff auf das Azure Ad. Mit dem Admin Consent wird dieser Zugriff gewährt. Es werdne zwei Admin Consents benötigt. Einmal um der Server API den Zugriff auf das Directory zu gewähren. Dann eine zweiter Consent für die Benutzer Anmeldung.
 
+1. Admin Consent für die Backend API mit Zugriff auf das AAD des Mandanten
+```
 https://login.microsoftonline.com/common/adminconsent?client_id=77991b59-7577-4292-b4ec-bdf115bb872e&response_mode=query&redirect_uri=https%3A%2F%2Forga-app-api-prod.azurewebsites.net%2Fazuread%2Fcallback
+```
+
+2. Admin Consent für die Client Application mit Zugriff auf die Backend API
+```
+https://login.microsoftonline.com/common/adminconsent?client_id=77991b59-7577-4292-b4ec-bdf115bb872e&response_mode=query&redirect_uri=https%3A%2F%2Forga-app-api-prod.azurewebsites.net%2Fazuread%2Fcallback
+```
+
+
 
 Wird der Admin Consent durch einen external Guest User druchgeführt, muss "common" durch den Mandanten ersetzt (z.B. "orga-app.de") werden. 
 
