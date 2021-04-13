@@ -8,6 +8,7 @@
   - Technical Admins: Führen technische Konfigurationen wie z.B. Azure Ad, SMTP etc. durch
   - Admins: Führen Inhaltliche Konfigurationen wie z.B. Mandanten Einstellungen durch, sehen alle Funktionsbereiche und Rollen
   - Benutzer: alle Benutzer
+  - Info Benutzer: gesondert lizensierte Info Benutzer
 - Optional: orgarena Benutzer anlegen
 
 ## Nützliche Links
