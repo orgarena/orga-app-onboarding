@@ -53,6 +53,8 @@ $adminGroupId = (az ad group create --display-name 'ORGA App Admins' --mail-nick
 az ad group member add --group $adminGroupId --member-id $currentUserId
 $benutzerGroupId = (az ad group create --display-name 'ORGA App Benutzer' --mail-nickname 'orga-app-benutzer' --query 'objectId' --output tsv)
 $tecadminGroupId = (az ad group create --display-name 'ORGA App Tech Admins' --mail-nickname 'orga-app-tec-admins' --query 'objectId' --output tsv)
+$infoGroupId = (az ad group create --display-name 'ORGA App Info Benutzer' --mail-nickname 'orga-app-info-benutzer' --query 'objectId' --output tsv)
+
 az ad group member add --group $tecadminGroupId --member-id $currentUserId
 $tenantId = (az account show --query 'tenantId' --output tsv)
 $result = @{
@@ -60,13 +62,14 @@ $result = @{
    user_group_id = $benutzerGroupId
    admin_group_id = $adminGroupId
    technical_admin_group_id = $tecadminGroupId
+   info_group_id = $infoGroupId
 }
 
 # Ausgabe der Informationen als JSON zum Update der ORGA App AzureAd Config
 ConvertTo-Json -InputObject $result
 
 # Ausgabe in die Console
-Write-Host "Azure Ad TenantId: $tenantId`nORGA App Admins: $adminGroupId `nORGA App Benutzer: $benutzerGroupId `nORGA-App Tech Admins $tecadminGroupId"
+Write-Host "Azure Ad TenantId: $tenantId`nORGA App Admins: $adminGroupId `nORGA App Benutzer: $benutzerGroupId `nORGA-App Tech Admins $tecadminGroupId `nORGA-App Info Benutzer $infoGroupId"
 
 ```
 
@@ -81,6 +84,7 @@ Connect-AzureAD -Confirm -TenantId 'XXX'
 $adminGroup= New-AzureADGroup -DisplayName 'ORGA App Admins' -MailNickName 'orga-app-admins' -MailEnabled $false -SecurityEnabled $true
 $benutzerGroup= New-AzureADGroup -DisplayName 'ORGA App Benutzer' -MailNickName 'orga-app-benutzer' -MailEnabled $false -SecurityEnabled $true
 $tecadminGroup= New-AzureADGroup -DisplayName 'ORGA App Tech Admins' -MailNickName 'orga-app-tec-admins' -MailEnabled $false -SecurityEnabled $true
+$infoBenutzerGroup= New-AzureADGroup -DisplayName 'ORGA App Info Benutzer' -MailNickName 'orga-app--info-benutzer' -MailEnabled $false -SecurityEnabled $true
 
 $currentUserName = (Get-AzureADCurrentSessionInfo).Account.Id
 $currentUserId = (Get-AzureADUser -Filter "UserPrincipalName eq '$currentUserName'").ObjectId
@@ -94,6 +98,7 @@ $result = @{
    user_group_id = $benutzerGroup.ObjectId
    admin_group_id = $adminGroup.ObjectId
    technical_admin_group_id = $tecadminGroup.ObjectId
+   info_group_id = $infoBenutzerGroup.ObjectId
 }
 
 # Ausgabe der Informationen als JSON zum Update der ORGA App AzureAd Config
@@ -124,6 +129,8 @@ $currentUserId = (az ad signed-in-user show --query 'objectId' --output tsv)
 $adminGroupId = (az ad group create --display-name "ORGA App Admins $postfix" --mail-nickname "orga-app-admins-$postfix_nick" --query  'objectId' --output tsv)
 az ad group member add --group $adminGroupId --member-id $currentUserId
 $benutzerGroupId = (az ad group create --display-name "ORGA App Benutzer $postfix" --mail-nickname "orga-app-benutzer-$postfix_nick" --query 'objectId' --output tsv)
+$infoGroupId = (az ad group create --display-name "ORGA App Info Benutzer $postfix" --mail-nickname "orga-app-info-benutzer-$postfix_nick" --query 'objectId' --output tsv)
+
 $tecadminGroupId = (az ad group create --display-name "ORGA App Tech Admins $postfix" --mail-nickname "orga-app-tec-admins-$postfix_nick" --query 'objectId' --output tsv)
 az ad group member add --group $tecadminGroupId --member-id $currentUserId
 $tenantId = (az account show --query 'tenantId' --output tsv)
@@ -132,6 +139,7 @@ $result = @{
    user_group_id = $benutzerGroupId
    admin_group_id = $adminGroupId
    technical_admin_group_id = $tecadminGroupId
+   info_group_id = $infoGroupId
 }
 
 # Ausgabe der Informationen als JSON zum Update der ORGA App AzureAd Config
