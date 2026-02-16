@@ -25,12 +25,12 @@ Die API benötigt Zugriff auf das Azure Ad. Mit dem Admin Consent wird dieser Zu
 
 1. Admin Consent für die Backend API mit Zugriff auf das AAD des Mandanten
 ```
-https://login.microsoftonline.com/common/adminconsent?client_id=77991b59-7577-4292-b4ec-bdf115bb872e&response_mode=query&redirect_uri=https%3A%2F%2Forga-app-api-prod.azurewebsites.net%2Fazuread%2Fcallback
+https://login.microsoftonline.com/common/adminconsent?client_id=77991b59-7577-4292-b4ec-bdf115bb872e&response_mode=query&redirect=https://api.orga-app.de/api/callback
 ```
 
-2. Admin Consent für die Client Application mit Zugriff auf die Backend API
+2. Admin Consent für die Client Application
 ```
-https://login.microsoftonline.com/common/adminconsent?client_id=77029f07-5963-4861-bc60-a500885c52dc&response_mode=query&redirect_uri=https%3A%2F%2Forga-app-api-prod.azurewebsites.net%2Fazuread%2Fcallback
+https://login.microsoftonline.com/common/adminconsent?client_id=e874ee14-7091-4856-93b4-0f3d736c9799&response_mode=query&redirect=https://api.orga-app.de/api/callback
 ```
 
 
